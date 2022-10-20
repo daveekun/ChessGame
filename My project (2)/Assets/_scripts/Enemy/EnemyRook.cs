@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class EnemyRook : Enemy
 {
+    EnemyManager em = EnemyManager.instance;
+    public void Awake()
+    {
+        CalculateMovesToTarget(new Vector2Int(5, 5));
+    }
     public override void CalculateMovesToTarget(Vector2Int cords)
     {
         base.CalculateMovesToTarget(cords);
@@ -41,6 +46,7 @@ public class EnemyRook : Enemy
     }
     public override void Move(string direction)
     {
+        em.enemyPos[currentCords] = null;
         switch (direction)
         {
             case "Up":
@@ -60,6 +66,7 @@ public class EnemyRook : Enemy
                 transform.position = new Vector3(transform.position.x + 1f, transform.position.y - 0.5f, 0);
                 break;
         }
+        em.enemyPos[currentCords] = gameObject;
     }
     IEnumerator IRookMover()
     {

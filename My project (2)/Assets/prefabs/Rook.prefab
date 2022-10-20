@@ -114,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 7184905703037319188}
   AttackDamage: 1
+  type: Rook
   spawnCords: {x: 0, y: 0}
   currentCords: {x: 0, y: 0}
   movesToDo: []

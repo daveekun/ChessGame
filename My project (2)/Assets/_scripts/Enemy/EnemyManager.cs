@@ -6,7 +6,7 @@ public class EnemyManager : MonoBehaviour
 {
     // singleton
     public static EnemyManager instance;
-
+    public Dictionary<Vector2Int, GameObject> enemyPos = new Dictionary<Vector2Int, GameObject>();
     public Enemy[] enemies;
     
     void Start()
@@ -29,6 +29,7 @@ public class EnemyManager : MonoBehaviour
         {
             Vector3 spawnPosition = gridManager.GridCordsToWorldCords(thisenemy.spawnCords);
             ObjectPooler.instance.SpwanFromPool(thisenemy.type, spawnPosition, Quaternion.identity);
+            enemyPos[thisenemy.spawnCords] = thisenemy.gameObject;
         }
     }
 

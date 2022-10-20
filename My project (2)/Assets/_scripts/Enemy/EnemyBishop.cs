@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBishop : Enemy
 {
+    EnemyManager em = EnemyManager.instance;
     public override void CalculateMovesToTarget(Vector2Int cords)
     {
         base.CalculateMovesToTarget(cords);
@@ -48,6 +49,7 @@ public class EnemyBishop : Enemy
     }
     public override void Move(string direction)
     {
+        em.enemyPos[currentCords] = null;
         switch (direction)
         {
             case "Down":
@@ -71,6 +73,7 @@ public class EnemyBishop : Enemy
                 transform.position = new Vector3(transform.position.x + 2, transform.position.y, 0);
                 break;
         }
+        em.enemyPos[currentCords] = gameObject;
     }
     IEnumerator IBishopMover()
     {
